@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <script src="index.js"></script>
+    <div class="container">
+      <!-- Nav -->
+      <nav class="sidebar">
+        <div class="menu-item">
+          <i class="bx bx-home-alt"></i>
+          <a href="#">Home</a>
+        </div>
+        <div class="menu-item">
+          <i class="bx bx-calendar-event"></i>
+          <a href="#">Events</a>
+        </div>
+        <div class="menu-item">
+          <i class="bx bx-user-voice"></i>
+          <a href="#">Speakers</a>
+        </div>
+        <div class="menu-item">
+          <i class="bx bx-notepad"></i>
+          <a href="#">Reports</a>
+        </div>
+        <div class="menu-item">
+          <i class="bx bx-bell"></i>
+          <a href="#">Notifications</a>
+        </div>
+        <div class="menu-item">
+          <i class="bx bx-conversation"></i>
+          <a href="#">Messages</a>
+        </div>
+        <div class="menu-item">
+          <i class="bx bx-cog"></i>
+          <a href="#">Settings</a>
+        </div>
+        <div id="collapse-btn">
+          <i class="bx bx-chevrons-left"></i>
+          <span>Collapse</span>
+        </div>
+        <div class="dark-mode-toggle" id="darkModeToggle">
+          <i class="bx bx-moon"></i>
+          <span>Dark Mode</span>
+        </div>
+        <div class="user-profile">
+          <img src="/api/placeholder/40/40" alt="User Image" />
+          <p>rudra.devi@gmail.com</p>
+        </div>
+      </nav>
+      <!-- Main Content -->
+      <div class="main-content">
+        <p>Welcome! here's your summary</p>
+        <!-- Metrics -->
+        <section class="metrics">
+          <div class="metric-card">
+            <h3>Total Events <i class="bx bx-info-circle"></i></h3>
+            <div class="metric-item">
+              <p>100,000</p>
+              <div class="metric-change">
+                <span class="arrow-up">&#8599;</span>
+                <span>+5.0%</span>
+              </div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <h3>Active Speakers <i class="bx bx-info-circle"></i></h3>
+            <div class="metric-item">
+              <p>25</p>
+              <div class="arrow-down">
+                <span class="arrow-down">&#8600;</span>
+                <span>-5.0%</span>
+              </div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <h3>Total Registrations <i class="bx bx-info-circle"></i></h3>
+            <div class="metric-item">
+              <p>300</p>
+              <div class="metric-change">
+                <span class="arrow-up">&#8599;</span>
+                <span>+5.0%</span>
+              </div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <h3>Total Revenue <i class="bx bx-info-circle"></i></h3>
+            <div class="metric-item">
+              <p>$500,000</p>
+              <div class="metric-change">
+                <span class="arrow-up">&#8599;</span>
+                <span>+5.0%</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Event Chart -->
+        <section>
+          <p>Event Registrations per month</p>
+          <div class="dashboard-container">
+            <!--stat chart -->
+            <div class="chart-section">
+              <canvas id="eventChart"></canvas>
+            </div>
+            <!-- carousel -->
+            <div class="carousel-section">
+              <div class="carousel-container">
+                <div class="carousel-track">
+                  <div class="carousel-slide">
+                    <img src="Slide.png" alt="Slide 1" />
+                    <div class="carousel-content">
+                      <h2>Latest News & Updates</h2>
+                      <p>
+                        Turpis interdum nunc varius ornare dignissim pretium.
+                        Massa ornare quis aliquet sed vitae. Sed velit nisi,
+                        fermentum erat. Fringilla purus, erat fringilla
+                        tincidunt quisque non. Pellentesque in ut tellus.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="carousel-slide">
+                    <img src="Slide 2.png" alt="Slide 2" />
+                    <div class="carousel-content">
+                      <h2>Latest News & Updates</h2>
+                      <p>
+                        Turpis interdum nunc varius ornare dignissim pretium.
+                        Massa ornare quis aliquet sed vitae. Sed velit nisi,
+                        fermentum erat. Fringilla purus, erat fringilla
+                        tincidunt quisque non. Pellentesque in ut tellus.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="carousel-slide">
+                    <img src="Slide 3.png" alt="Slide 3" />
+                    <div class="carousel-content">
+                      <h2>Latest News & Updates</h2>
+                      <p>
+                        Turpis interdum nunc varius ornare dignissim pretium.
+                        Massa ornare quis aliquet sed vitae. Sed velit nisi,
+                        fermentum erat. Fringilla purus, erat fringilla
+                        tincidunt quisque non. Pellentesque in ut tellus.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <button class="carousel-button prev"><i class='bx bx-chevron-left' ></i></button>
+                <button class="carousel-button next"><i class='bx bxs-chevron-right' ></i></button>
+
+                <div class="carousel-dots"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      // Sidebar collapse
+      document
+        .getElementById("collapse-btn")
+        .addEventListener("click", function () {
+          const sidebar = document.querySelector(".sidebar");
+          sidebar.classList.toggle("collapsed");
+
+          // Update collapse button icon
+          const icon = this.querySelector("i");
+          if (sidebar.classList.contains("collapsed")) {
+            icon.classList.remove("bx-chevrons-left");
+            icon.classList.add("bx-chevrons-right");
+          } else {
+            icon.classList.remove("bx-chevrons-right");
+            icon.classList.add("bx-chevrons-left");
+          }
+        });
+      // chart
+      document
+        .getElementById("darkModeToggle")
+        .addEventListener("click", function () {
+          document.body.classList.toggle("dark-mode");
+        });
+
+      const ctx = document.getElementById("eventChart").getContext("2d");
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+          datasets: [
+            {
+              data: [
+                675, 950, 780, 425, 1000, 580, 875, 350, 875, 675, 950, 600,
+              ],
+              backgroundColor: "rgb(139, 92, 246)",
+              borderRadius: 4,
+              barThickness: 30,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+            title: {
+              display: false,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 1000,
+              ticks: {
+                stepSize: 200,
+                font: {
+                  family: "system-ui",
+                },
+              },
+              grid: {
+                color: "#f0f0f0",
+              },
+            },
+            x: {
+              grid: {
+                display: false,
+              },
+              ticks: {
+                font: {
+                  family: "system-ui",
+                },
+              },
+            },
+          },
+        },
+      });
+
+      class Carousel {
+        constructor(container) {
+          this.container = container;
+          this.track = container.querySelector(".carousel-track");
+          this.slides = [...container.querySelectorAll(".carousel-slide")];
+          this.prevButton = container.querySelector(".carousel-button.prev");
+          this.nextButton = container.querySelector(".carousel-button.next");
+          this.dotsContainer = container.querySelector(".carousel-dots");
+
+          this.currentIndex = 0;
+          this.slideCount = this.slides.length;
+
+          this.init();
+        }
+
+        init() {
+          //To Create dots
+          this.slides.forEach((_, index) => {
+            const dot = document.createElement("button");
+            dot.classList.add("carousel-dot");
+            if (index === 0) dot.classList.add("active");
+            dot.addEventListener("click", () => this.goToSlide(index));
+            this.dotsContainer.appendChild(dot);
+          });
+
+          // Add event listeners
+          this.prevButton.addEventListener("click", () => this.prevSlide());
+          this.nextButton.addEventListener("click", () => this.nextSlide());
+
+          // Start auto-sliding
+          this.startAutoSlide();
+
+          // Pause auto-sliding on hover
+          this.container.addEventListener("mouseenter", () =>
+            this.stopAutoSlide()
+          );
+          this.container.addEventListener("mouseleave", () =>
+            this.startAutoSlide()
+          );
+        }
+
+        updateSlidePosition() {
+          this.track.style.transform = `translateX(-${
+            this.currentIndex * 100
+          }%)`;
+
+          // Update dots
+          const dots = [...this.dotsContainer.children];
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === this.currentIndex);
+          });
+        }
+
+        nextSlide() {
+          this.currentIndex = (this.currentIndex + 1) % this.slideCount;
+          this.updateSlidePosition();
+        }
+
+        prevSlide() {
+          this.currentIndex =
+            (this.currentIndex - 1 + this.slideCount) % this.slideCount;
+          this.updateSlidePosition();
+        }
+
+        goToSlide(index) {
+          this.currentIndex = index;
+          this.updateSlidePosition();
+        }
+
+        startAutoSlide() {
+          this.stopAutoSlide();
+          this.autoSlideInterval = setInterval(() => this.nextSlide(), 5000);
+        }
+
+        stopAutoSlide() {
+          if (this.autoSlideInterval) {
+            clearInterval(this.autoSlideInterval);
+          }
+        }
+      }
+
+      // Initialize the carousel
+      document.addEventListener("DOMContentLoaded", () => {
+        const carouselContainer = document.querySelector(".carousel-container");
+        new Carousel(carouselContainer);
+      });
+    </script>
+  </body>
+</html>
