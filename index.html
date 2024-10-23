@@ -10,9 +10,9 @@
     />
     <link rel="stylesheet" href="index.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script src="index.js"></script>
   </head>
   <body>
-    <script src="index.js"></script>
     <div class="container">
       <!-- Nav -->
       <nav class="sidebar">
@@ -103,7 +103,7 @@
             </div>
           </div>
         </section>
-        <!-- Event Chart -->
+        <!-- Event dashboard and Chart -->
         <section>
           <p>Event Registrations per month</p>
           <div class="dashboard-container">
@@ -153,197 +153,92 @@
                   </div>
                 </div>
 
-                <button class="carousel-button prev"><i class='bx bx-chevron-left' ></i></button>
-                <button class="carousel-button next"><i class='bx bxs-chevron-right' ></i></button>
+                <button class="carousel-button prev">
+                  <i class="bx bx-chevron-left"></i>
+                </button>
+                <button class="carousel-button next">
+                  <i class="bx bxs-chevron-right"></i>
+                </button>
 
                 <div class="carousel-dots"></div>
               </div>
             </div>
           </div>
         </section>
+        
+        <!-- Table -->
+        <section>
+          <p>Events History</p>
+          <div class="table-container">
+            <div class="table-header">
+              <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input
+                  type="text"
+                  class="search-input"
+                  placeholder="Search..."
+                />
+              </div>
+              <button class="filter-button">Date <span>▼</span></button>
+              <button class="filter-button">Status <span>▼</span></button>
+              <button class="filter-button">Name <span>▼</span></button>
+              <span class="results-info">Displaying 100 results</span>
+              <button class="export-button">⬇️ Export</button>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Event Name</th>
+                  <th>Date</th>
+                  <th>Speaker</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cloud Innovation Summit</td>
+                  <td>2024-10-15</td>
+                  <td>Jane Doe</td>
+                  <td>
+                    <span class="status-badge status-completed">Completed</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Blockchain Revolution Conference</td>
+                  <td>2024-11-05</td>
+                  <td>Dr. Peter Smith</td>
+                  <td>
+                    <span class="status-badge status-in-progress"
+                      >In Progress</span
+                    >
+                  </td>
+                </tr>
+                <!-- Add more rows as needed -->
+              </tbody>
+            </table>
+
+            <div class="pagination">
+              <div class="pagination-controls">
+                <button class="pagination-button">←</button>
+                <button class="pagination-button active">1</button>
+                <button class="pagination-button">2</button>
+                <button class="pagination-button">3</button>
+                <button class="pagination-button">→</button>
+              </div>
+              <div>
+                Show:
+                <select class="rows-select">
+                  <option>10 rows</option>
+                  <option>25 rows</option>
+                  <option>50 rows</option>
+                  <option>100 rows</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
-
-    <script>
-      // Sidebar collapse
-      document
-        .getElementById("collapse-btn")
-        .addEventListener("click", function () {
-          const sidebar = document.querySelector(".sidebar");
-          sidebar.classList.toggle("collapsed");
-
-          // Update collapse button icon
-          const icon = this.querySelector("i");
-          if (sidebar.classList.contains("collapsed")) {
-            icon.classList.remove("bx-chevrons-left");
-            icon.classList.add("bx-chevrons-right");
-          } else {
-            icon.classList.remove("bx-chevrons-right");
-            icon.classList.add("bx-chevrons-left");
-          }
-        });
-      // chart
-      document
-        .getElementById("darkModeToggle")
-        .addEventListener("click", function () {
-          document.body.classList.toggle("dark-mode");
-        });
-
-      const ctx = document.getElementById("eventChart").getContext("2d");
-
-      new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
-          datasets: [
-            {
-              data: [
-                675, 950, 780, 425, 1000, 580, 875, 350, 875, 675, 950, 600,
-              ],
-              backgroundColor: "rgb(139, 92, 246)",
-              borderRadius: 4,
-              barThickness: 30,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false,
-            },
-            title: {
-              display: false,
-            },
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              max: 1000,
-              ticks: {
-                stepSize: 200,
-                font: {
-                  family: "system-ui",
-                },
-              },
-              grid: {
-                color: "#f0f0f0",
-              },
-            },
-            x: {
-              grid: {
-                display: false,
-              },
-              ticks: {
-                font: {
-                  family: "system-ui",
-                },
-              },
-            },
-          },
-        },
-      });
-
-      class Carousel {
-        constructor(container) {
-          this.container = container;
-          this.track = container.querySelector(".carousel-track");
-          this.slides = [...container.querySelectorAll(".carousel-slide")];
-          this.prevButton = container.querySelector(".carousel-button.prev");
-          this.nextButton = container.querySelector(".carousel-button.next");
-          this.dotsContainer = container.querySelector(".carousel-dots");
-
-          this.currentIndex = 0;
-          this.slideCount = this.slides.length;
-
-          this.init();
-        }
-
-        init() {
-          //To Create dots
-          this.slides.forEach((_, index) => {
-            const dot = document.createElement("button");
-            dot.classList.add("carousel-dot");
-            if (index === 0) dot.classList.add("active");
-            dot.addEventListener("click", () => this.goToSlide(index));
-            this.dotsContainer.appendChild(dot);
-          });
-
-          // Add event listeners
-          this.prevButton.addEventListener("click", () => this.prevSlide());
-          this.nextButton.addEventListener("click", () => this.nextSlide());
-
-          // Start auto-sliding
-          this.startAutoSlide();
-
-          // Pause auto-sliding on hover
-          this.container.addEventListener("mouseenter", () =>
-            this.stopAutoSlide()
-          );
-          this.container.addEventListener("mouseleave", () =>
-            this.startAutoSlide()
-          );
-        }
-
-        updateSlidePosition() {
-          this.track.style.transform = `translateX(-${
-            this.currentIndex * 100
-          }%)`;
-
-          // Update dots
-          const dots = [...this.dotsContainer.children];
-          dots.forEach((dot, index) => {
-            dot.classList.toggle("active", index === this.currentIndex);
-          });
-        }
-
-        nextSlide() {
-          this.currentIndex = (this.currentIndex + 1) % this.slideCount;
-          this.updateSlidePosition();
-        }
-
-        prevSlide() {
-          this.currentIndex =
-            (this.currentIndex - 1 + this.slideCount) % this.slideCount;
-          this.updateSlidePosition();
-        }
-
-        goToSlide(index) {
-          this.currentIndex = index;
-          this.updateSlidePosition();
-        }
-
-        startAutoSlide() {
-          this.stopAutoSlide();
-          this.autoSlideInterval = setInterval(() => this.nextSlide(), 5000);
-        }
-
-        stopAutoSlide() {
-          if (this.autoSlideInterval) {
-            clearInterval(this.autoSlideInterval);
-          }
-        }
-      }
-
-      // Initialize the carousel
-      document.addEventListener("DOMContentLoaded", () => {
-        const carouselContainer = document.querySelector(".carousel-container");
-        new Carousel(carouselContainer);
-      });
-    </script>
   </body>
 </html>
