@@ -27,6 +27,14 @@ body {
   width: 70px;
 }
 
+.userbtn {
+  border: #f3f4f6;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-bottom: 10px;
+}
+
 .sidebar div {
   margin-bottom: 15px;
 }
@@ -90,16 +98,8 @@ body {
 }
 
 .user-profile {
-  text-align: center;
   padding-top: 20px;
   border-top: 1px solid #dee2e6;
-}
-
-.user-profile img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-bottom: 10px;
 }
 
 .user-profile p {
@@ -118,7 +118,6 @@ body {
   margin-bottom: 20px;
   font-size: 24px;
   font-weight: 500;
-  
 }
 
 /* metrics */
@@ -185,7 +184,8 @@ body {
   margin-bottom: 10px;
 }
 
-.carousel-section, .chart-section {
+.carousel-section,
+.chart-section {
   flex: 1;
   min-width: 0; /* Prevents flex items from overflowing */
 }
@@ -368,7 +368,8 @@ table {
   margin-bottom: 20px;
 }
 
-th, td {
+th,
+td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #e2e8f0;
@@ -396,7 +397,7 @@ td {
 }
 
 .status-badge::before {
-  content: '';
+  content: "";
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -442,7 +443,7 @@ td {
   cursor: pointer;
 }
 
-.pagination-controls :hover{
+.pagination-controls :hover {
   background-color: #e2e8f0;
 }
 
@@ -457,4 +458,87 @@ td {
   border: 1px solid #e2e8f0;
   border-radius: 6px;
   margin-left: 8px;
+}
+/* Modal popup */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.modal-body {
+  margin-bottom: 2rem;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.speaker-avatars {
+  display: flex;
+  gap: 0.2rem;
+  margin-top: 0.5rem;
+}
+
+.btn-edit {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-delete {
+  padding: 0.5rem 1rem;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-complete {
+  padding: 0.5rem 1rem;
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }

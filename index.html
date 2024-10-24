@@ -53,8 +53,17 @@
           <span>Dark Mode</span>
         </div>
         <div class="user-profile">
-          <img src="/api/placeholder/40/40" alt="User Image" />
-          <p>rudra.devi@gmail.com</p>
+          <div class="menu-item">
+            <button class="userbtn">
+              <i class="bx bxs-user" style="color: #847f7f"></i>
+            </button>
+            <div>
+              <p>Rudra Devi</p>
+              <p>rudra.devi@gmail.com</p>
+            </div>
+          </div>
+          <!-- <img src="/api/placeholder/40/40" alt="User Image" />
+          <p>rudra.devi@gmail.com</p> -->
         </div>
       </nav>
       <!-- Main Content -->
@@ -208,11 +217,15 @@
 
             <div class="pagination">
               <div class="pagination-controls">
-                <button class="pagination-button"><i class='bx bx-left-arrow-alt'></i></button>
+                <button class="pagination-button">
+                  <i class="bx bx-left-arrow-alt"></i>
+                </button>
                 <button class="pagination-button active">1</button>
                 <button class="pagination-button">2</button>
                 <button class="pagination-button">3</button>
-                <button class="pagination-button"><i class='bx bx-right-arrow-alt'></i></button>
+                <button class="pagination-button">
+                  <i class="bx bx-right-arrow-alt"></i>
+                </button>
               </div>
               <div>
                 Show:
@@ -226,6 +239,32 @@
             </div>
           </div>
         </section>
+
+        <!-- Modal -->
+        <div id="eventModal" class="modal hidden">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 id="modalEventName">Event Name</h2>
+              <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+              <p id="modalEventDate" class="text-gray-600"></p>
+              <p id="modalEventDescription" class="mt-4"></p>
+              <div class="speaker-section mt-4">
+                <h3>Speakers</h3>
+                <div id="modalSpeakers" class="speaker-avatars"></div>
+              </div>
+              <p id="modalAttendees" class="mt-4"></p>
+            </div>
+            <div class="modal-footer">
+              <button id="editEventBtn" class="btn-edit">Edit</button>
+              <button id="deleteEventBtn" class="btn-delete">Delete</button>
+              <button id="completeEventBtn" class="btn-complete">
+                Mark as completed
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
