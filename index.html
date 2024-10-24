@@ -165,25 +165,33 @@
             </div>
           </div>
         </section>
-        
+
         <!-- Table -->
         <section>
           <p>Events History</p>
           <div class="table-container">
             <div class="table-header">
               <div class="search-container">
-                <span class="search-icon">🔍</span>
+                <span class="search-icon"><i class="bx bx-search"></i></span>
                 <input
                   type="text"
                   class="search-input"
                   placeholder="Search..."
                 />
               </div>
-              <button class="filter-button">Date <span>▼</span></button>
-              <button class="filter-button">Status <span>▼</span></button>
-              <button class="filter-button">Name <span>▼</span></button>
+              <button class="filter-button">
+                Date <span><i class="bx bxs-chevron-down"></i></span>
+              </button>
+              <button class="filter-button">
+                Status <span><i class="bx bxs-chevron-down"></i></span>
+              </button>
+              <button class="filter-button">
+                Name <span><i class="bx bxs-chevron-down"></i></span>
+              </button>
               <span class="results-info">Displaying 100 results</span>
-              <button class="export-button">⬇️ Export</button>
+              <button class="export-button">
+                <i class="bx bx-download"></i> Export
+              </button>
             </div>
 
             <table>
@@ -195,36 +203,16 @@
                   <th>Status</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>Cloud Innovation Summit</td>
-                  <td>2024-10-15</td>
-                  <td>Jane Doe</td>
-                  <td>
-                    <span class="status-badge status-completed">Completed</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Blockchain Revolution Conference</td>
-                  <td>2024-11-05</td>
-                  <td>Dr. Peter Smith</td>
-                  <td>
-                    <span class="status-badge status-in-progress"
-                      >In Progress</span
-                    >
-                  </td>
-                </tr>
-                <!-- Add more rows as needed -->
-              </tbody>
+              <tbody></tbody>
             </table>
 
             <div class="pagination">
               <div class="pagination-controls">
-                <button class="pagination-button">←</button>
+                <button class="pagination-button"><i class='bx bx-left-arrow-alt'></i></button>
                 <button class="pagination-button active">1</button>
                 <button class="pagination-button">2</button>
                 <button class="pagination-button">3</button>
-                <button class="pagination-button">→</button>
+                <button class="pagination-button"><i class='bx bx-right-arrow-alt'></i></button>
               </div>
               <div>
                 Show:
