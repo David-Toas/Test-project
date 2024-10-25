@@ -13,9 +13,29 @@
     <script src="index.js"></script>
   </head>
   <body>
+
+    <div class="mobile-header">
+      <div class="mobile-header-content">
+        <div class="logo">
+          <img src="Logo.png" alt="Logo" />
+        </div>
+        <button class="hamburger-menu" aria-label="Toggle menu">
+          <i class="bx bx-menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <input type="checkbox" id="mobile-menu-toggle">
+
+
+
     <div class="container">
       <!-- Nav -->
       <nav class="sidebar">
+        <div class="main-logo">
+          <img src="Logo.png" alt="Logo" />
+        </div>
         <div class="menu-item">
           <i class="bx bx-home-alt"></i>
           <a href="#">Home</a>
@@ -53,7 +73,7 @@
           <span>Dark Mode</span>
         </div>
         <div class="user-profile">
-          <div class="menu-item">
+          <div class="usermenu-item">
             <button class="userbtn">
               <i class="bx bxs-user" style="color: #847f7f"></i>
             </button>
@@ -62,8 +82,6 @@
               <p>rudra.devi@gmail.com</p>
             </div>
           </div>
-          <!-- <img src="/api/placeholder/40/40" alt="User Image" />
-          <p>rudra.devi@gmail.com</p> -->
         </div>
       </nav>
       <!-- Main Content -->
@@ -198,11 +216,22 @@
                 Name <span><i class="bx bxs-chevron-down"></i></span>
               </button>
               <span class="results-info">Displaying 100 results</span>
-              <button class="export-button">
-                <i class="bx bx-download"></i> Export
-              </button>
+              <div class="sort-export">
+                <span class="">Sort:</span>
+                <button class="most-recent">
+                  Most Recent <span><i class="bx bxs-chevron-down"></i></span>
+                </button>
+              </div>
+              <div id="sort-export" class="export">
+                <button class="filter-button">
+                  <span<i class='bx bx-dots-vertical-rounded'></i></span>
+                </button>
+                <button class="export-button">
+                  <i class="bx bx-download"></i> Export
+                </button>
+              </div>
             </div>
-
+            
             <table>
               <thead>
                 <tr>
@@ -251,7 +280,7 @@
               <p id="modalEventDate" class="text-gray-600"></p>
               <p id="modalEventDescription" class="mt-4"></p>
               <div class="speaker-section mt-4">
-                <h3>Speakers</h3>
+                <h5>Speakers</h5>
                 <div id="modalSpeakers" class="speaker-avatars"></div>
               </div>
               <p id="modalAttendees" class="mt-4"></p>
